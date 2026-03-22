@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Adanela Musaraj — Consultante Scientifique et Stratégique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f8f5ef;
+    --mid: #3a3a3a;
+    --muted: #6b6b6b;
+    --rule-light: #c8c0b0;
+    --accent: #8b0000;
+    --font-head: 'Playfair Display', 'Times New Roman', serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-label: 'Oswald', 'Arial Narrow', sans-serif;
+    --font-caption: 'Libre Baskerville', Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 17px; background: var(--paper); scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--paper); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  /* MASTHEAD */
+  .masthead { background: var(--paper); border-bottom: 4px solid var(--ink); }
+  .masthead-inner { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  .masthead-topbar { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid var(--ink); flex-wrap: wrap; gap: 0.4rem; }
+  .topbar-text { font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .topbar-text a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; font-weight: 500; }
+  .topbar-text a:hover { color: var(--accent); border-color: var(--accent); }
+  .masthead-title-wrap { text-align: center; padding: 1.4rem 0 1rem; }
+  .masthead-eyebrow { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+  .masthead-name { font-family: var(--font-head); font-size: clamp(2.4rem, 7vw, 4.8rem); font-weight: 900; letter-spacing: -0.01em; line-height: 0.95; color: var(--ink); }
+  .masthead-name em { font-style: italic; font-weight: 700; }
+  .rule-row { display: flex; align-items: center; gap: 0.7rem; margin: 0.8rem 0 0; }
+  .rule-row .rl { flex: 1; height: 1px; background: var(--ink); }
+  .rule-row .rd { width: 6px; height: 6px; background: var(--ink); transform: rotate(45deg); flex-shrink: 0; }
+  .masthead-subtitle { font-family: var(--font-label); font-size: clamp(0.62rem, 1.5vw, 0.75rem); letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-top: 0.9rem; line-height: 1.8; }
+
+  /* RUBRIQUE */
+  .rubrique-wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  .rubrique-bar { display: flex; align-items: center; gap: 0.8rem; padding: 0.55rem 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule-light); margin-top: 1.8rem; flex-wrap: wrap; }
+  .rtag { font-family: var(--font-label); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 0.2rem 0.6rem; flex-shrink: 0; }
+  .rdesc { font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .rcounter { margin-left: auto; font-family: var(--font-label); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
+
+  /* CAROUSEL */
+  .carousel-section { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+  .controls { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--rule-light); flex-wrap: wrap; gap: 0.5rem; }
+  .nav-grp { display: flex; align-items: center; gap: 0.5rem; }
+  .nbtn { background: var(--ink); color: var(--paper); border: none; width: 34px; height: 34px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font-label); transition: background 0.15s; }
+  .nbtn:hover { background: var(--accent); }
+  .nbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .ncounter { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; min-width: 50px; text-align: center; }
+  .expand-btn { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; background: transparent; border: 1px solid var(--ink); color: var(--ink); padding: 0.35rem 0.9rem; cursor: pointer; transition: background 0.15s, color 0.15s; font-weight: 500; }
+  .expand-btn:hover { background: var(--ink); color: var(--paper); }
+
+  /* DOTS */
+  .dots-row { display: flex; justify-content: center; gap: 0.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-light); flex-wrap: wrap; }
+  .dot { width: 8px; height: 8px; background: var(--rule-light); border: none; cursor: pointer; border-radius: 0; padding: 0; transition: background 0.15s; }
+  .dot.active { background: var(--ink); }
+  .dot:hover { background: var(--mid); }
+
+  /* TRACK */
+  .track-outer { overflow: hidden; }
+  .track { display: flex; transition: transform 0.5s cubic-bezier(0.77,0,0.175,1); will-change: transform; }
+
+  /* SLIDE */
+  .slide { flex: 0 0 100%; width: 100%; padding: 2rem 0 0.5rem; }
+  .slide-hdr { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule-light); padding: 0.3rem 0; margin-bottom: 1.6rem; flex-wrap: wrap; gap: 0.3rem; }
+  .s-pgnum { font-family: var(--font-label); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .s-secname { font-family: var(--font-label); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); font-weight: 600; }
+  .s-hl { font-family: var(--font-head); font-size: clamp(1.8rem, 5.5vw, 3.1rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.35rem; }
+  .s-hl em { font-style: italic; font-weight: 700; }
+  .s-deck { font-family: var(--font-head); font-size: clamp(1rem, 2.4vw, 1.22rem); font-style: italic; font-weight: 400; color: var(--mid); line-height: 1.45; margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule-light); }
+
+  /* COLUMNS */
+  .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-bottom: 1.4rem; }
+  .cols.two { grid-template-columns: 2fr 1fr; }
+  .cols.one { grid-template-columns: 1fr; }
+  .col { padding: 0 1.2rem 0 0; border-right: 1px solid var(--rule-light); }
+  .col:last-child { padding-right: 0; border-right: none; }
+  .col:not(:first-child) { padding-left: 1.2rem; }
+
+  /* Body text */
+  .col p { font-family: var(--font-body); font-size: clamp(0.9rem, 1.9vw, 1rem); line-height: 1.88; color: var(--mid); margin-bottom: 0.85rem; hyphens: auto; }
+  .col p:last-child { margin-bottom: 0; }
+  .col p strong { color: var(--ink); font-weight: 600; }
+  .dropcap::first-letter { font-family: var(--font-head); font-size: 3.5rem; font-weight: 900; float: left; line-height: 0.78; margin-right: 0.12em; margin-top: 0.14em; color: var(--ink); }
+
+  /* PULL QUOTE */
+  .pq { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule-light); padding: 1rem 0; margin: 1.2rem 0; }
+  .pq p { font-family: var(--font-head); font-size: clamp(1rem, 2.6vw, 1.28rem); font-style: italic; font-weight: 400; color: var(--ink); line-height: 1.45; margin: 0; }
+
+  /* ENCADRE */
+  .enc { border: 1px solid var(--ink); padding: 1rem 1.1rem; margin: 1.1rem 0 0; }
+  .enc-title { font-family: var(--font-label); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--paper); background: var(--ink); display: inline-block; padding: 0.14rem 0.5rem; margin-bottom: 0.7rem; }
+  .enc-title.red { background: var(--accent); }
+  .enc p { font-family: var(--font-caption); font-size: 0.87rem; line-height: 1.7; color: var(--mid); }
+  .enc p + p { margin-top: 0.45rem; }
+  .enc p strong { color: var(--ink); }
+
+  /* NACE */
+  .nace-strip { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.75rem 0; border-top: 1px solid var(--rule-light); border-bottom: 1px solid var(--rule-light); margin: 1rem 0; }
+  .nc { font-family: var(--font-label); font-size: 0.63rem; letter-spacing: 0.1em; font-weight: 600; color: var(--ink); border: 1px solid var(--ink); padding: 0.16rem 0.48rem; text-transform: uppercase; }
+
+  /* SERVICE TABLE */
+  .stbl { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .stbl tr { border-bottom: 1px solid var(--rule-light); }
+  .stbl tr:first-child { border-top: 1px solid var(--rule-light); }
+  .stbl td { padding: 0.65rem 0; vertical-align: top; }
+  .stbl td:first-child { width: 38%; font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink); padding-right: 1rem; line-height: 1.4; }
+  .stbl td:last-child { font-family: var(--font-body); font-size: 0.89rem; color: var(--mid); line-height: 1.7; }
+
+  /* BUYERS */
+  .buyers { border-top: 2px solid var(--ink); padding: 0.6rem 0; margin-top: 1.4rem; display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+  .blabel { font-family: var(--font-label); font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--ink); flex-shrink: 0; }
+  .blist { font-family: var(--font-caption); font-size: 0.81rem; color: var(--muted); font-style: italic; line-height: 1.6; }
+
+  /* EDGE BOX */
+  .edge { background: var(--ink); padding: 1rem 1.2rem; margin-top: 1.1rem; }
+  .edge p { font-family: var(--font-head); font-size: clamp(0.92rem, 2.1vw, 1.06rem); font-style: italic; color: var(--paper); line-height: 1.6; margin: 0; }
+  .edge p strong { color: #d4aa4a; font-style: normal; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; font-family: var(--font-label); }
+
+  /* ALL VIEW */
+  .all-view { display: none; flex-direction: column; }
+  .all-view.visible { display: flex; }
+  .av-block { border-top: 2px solid var(--ink); padding: 2rem 0 1.5rem; }
+  .av-block + .av-block { border-top: 1px solid var(--rule-light); }
+
+  /* FOOTER */
+  .site-footer { border-top: 4px solid var(--ink); background: var(--paper); padding: 1.8rem 1.5rem 1.4rem; margin-top: 2rem; }
+  .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+  .f-name { font-family: var(--font-head); font-size: 1.5rem; font-weight: 900; color: var(--ink); line-height: 1; }
+  .f-name em { font-style: italic; font-weight: 700; }
+  .f-role { font-family: var(--font-label); font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+  .f-contact { text-align: right; }
+  .f-contact a { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; font-weight: 500; }
+  .f-contact a:hover { color: var(--accent); border-color: var(--accent); }
+  .f-copy { font-family: var(--font-body); font-size: 0.74rem; color: var(--muted); margin-top: 0.4rem; font-style: italic; }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .cols, .cols.two { grid-template-columns: 1fr; }
+    .col { padding: 0 0 1.2rem; border-right: none; border-bottom: 1px solid var(--rule-light); }
+    .col:last-child { border-bottom: none; padding-bottom: 0; }
+    .col:not(:first-child) { padding-left: 0; padding-top: 1.2rem; }
+    .carousel-section, .rubrique-wrap { padding: 0 1rem 2rem; }
+    .masthead-inner { padding: 0 1rem; }
+    .f-contact { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) { .track { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="masthead" role="banner">
+  <div class="masthead-inner">
+    <div class="masthead-topbar">
+      <span class="topbar-text">Scientific &middot; Policy &middot; Finance Interface</span>
+      <span class="topbar-text"><a href="mailto:adanela.musaraj@yahoo.fr">adanela.musaraj@yahoo.fr</a></span>
+    </div>
+    <div class="masthead-title-wrap">
+      <div class="masthead-eyebrow">High-Stakes Knowledge Arbitrage &mdash; Health &middot; Biotechnology &middot; Food Systems &middot; Environment &middot; Education</div>
+      <div class="masthead-name">Dr. <em>Adanela</em> Musaraj</div>
+      <div class="rule-row"><span class="rl"></span><span class="rd"></span><span class="rl"></span><span class="rd"></span><span class="rl"></span></div>
+      <div class="masthead-subtitle">Consultante Senior &mdash; Arbitrage du Savoir Scientifique &amp; Stratégique<br>Serving Banks &middot; UN Agencies &middot; EU Institutions &middot; International NGOs &middot; Education Stakeholders</div>
+    </div>
+  </div>
+</header>
+
+<div class="rubrique-wrap">
+  <div class="rubrique-bar">
+    <span class="rtag">Profil &amp; Services</span>
+    <span class="rdesc">Portfolio of Consultancy Services &mdash; NACE-Coded for Institutional Procurement</span>
+    <span class="rcounter" id="rcounter">Page 1 of 9</span>
+  </div>
+</div>
+
+<div class="carousel-section">
+  <div class="controls">
+    <div class="nav-grp" id="navGrp">
+      <button class="nbtn" id="prevBtn" aria-label="Previous page">&#8592;</button>
+      <span class="ncounter" id="navCounter" aria-live="polite">1 / 9</span>
+      <button class="nbtn" id="nextBtn" aria-label="Next page">&#8594;</button>
+    </div>
+    <button class="expand-btn" id="expandBtn" aria-pressed="false">Lire tout &mdash; Read All</button>
+  </div>
+
+  <div class="dots-row" id="dotsRow"></div>
+
+  <div class="track-outer" id="trackOuter">
+    <div class="track" id="track" role="list">
+
+      <!-- PAGE 1 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 1 &mdash; Profil</span><span class="s-secname">Scientific-Policy-Finance Consultant</span></div>
+        <h1 class="s-hl">Une <em>conseillère</em> au carrefour<br>de la science, de la politique<br><em>et de la finance</em></h1>
+        <p class="s-deck">Dr. Adanela Musaraj translates high-complexity scientific and technical knowledge into institutional policy, financial risk frameworks, and operational programmes — serving Banks, UN agencies, EU bodies, and International NGOs.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">Dr. Adanela Musaraj is a Senior Scientific-Policy-Finance Interface Consultant and recognised High-Stakes Knowledge Arbitrage Advisor. She operates at the intersection of Health, Biotechnology, Food Systems, Environment, and Education — translating complex scientific realities into the language of institutional decision-making.</p>
+            <p>Her advisory work is defined by a rare sequential translation capacity: deep scientific knowledge converted into policy language, then into financial risk frameworks — a capability that spans disciplines and institutional cultures that rarely communicate directly.</p>
+          </div>
+          <div class="col">
+            <p>She advises the full spectrum of international institutional clients: development banks, UN agencies, European institutions, international NGOs, and education industry stakeholders. Each engagement is structured for compatibility with institutional procurement systems, with all services classified under recognised NACE codes.</p>
+            <div class="pq"><p>"The rarest institutional asset is not expertise — it is the ability to translate that expertise across scientific, regulatory, and financial registers simultaneously."</p></div>
+          </div>
+          <div class="col">
+            <div class="enc">
+              <span class="enc-title">Core Domains</span>
+              <p><strong>Health &amp; Biotechnology:</strong> Science-to-policy translation, regulatory intelligence, pharma programme design, public health strategy.</p>
+              <p><strong>Food Systems &amp; Environment:</strong> Food security early warning, global commodity intelligence, climate-agriculture data, supply chain traceability.</p>
+              <p><strong>Education:</strong> EMIS, digital transformation, TVET, inclusive and gender-responsive systems, SDG 4 alignment.</p>
+            </div>
+            <div class="nace-strip"><span class="nc">M 70.22</span><span class="nc">M 72.10</span><span class="nc">M 74.90</span><span class="nc">P 85.59</span><span class="nc">Q 86.90</span><span class="nc">Sections A–E</span></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Clients</span><span class="blist">World Bank &middot; UNDP &middot; WHO &middot; European Commission &middot; EIB &middot; EBRD &middot; UNESCO &middot; FAO &middot; UNICEF &middot; International NGOs &middot; Development Finance Institutions</span></div>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 2 &mdash; Cadre</span><span class="s-secname">Knowledge Arbitrage Framework</span></div>
+        <h2 class="s-hl">L'arbitrage du savoir —<br><em>seven service lines</em> for the<br>institutional market</h2>
+        <p class="s-deck">A structured portfolio of intermediate–high-stakes consultancy services, NACE-coded and tailored for Banks, UN agencies, EU institutions, and Health systems procurement.</p>
+        <div class="cols two">
+          <div class="col">
+            <p class="dropcap">Dr. Musaraj operates as a high-trust, high-value knowledge arbitrage consultant — a specialist who identifies and bridges the critical gap between what science knows, what regulators require, what financiers need to hear, and what institutions are capable of implementing.</p>
+            <p>This capability is in high institutional demand precisely because procurement systems at the World Bank, UN agencies, European institutions, and international banks regularly face science-facing decisions they cannot navigate internally. All services are NACE-coded for full compatibility with public tendering and institutional procurement frameworks.</p>
+            <p>The portfolio spans <strong>seven structured service lines</strong>, each designed around a distinct knowledge arbitrage edge: the translation of scientific complexity into institutional clarity that produces measurable, fundable, and auditable value.</p>
+            <div class="nace-strip"><span class="nc">M 70.22</span><span class="nc">M 72.11</span><span class="nc">M 72.19</span><span class="nc">M 72.20</span><span class="nc">M 74.30</span><span class="nc">M 74.90</span><span class="nc">P 85.59</span><span class="nc">J 63.99</span><span class="nc">K 64.99</span><span class="nc">Q 86.90</span></div>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>Service Line 1</td><td>Strategic Science &amp; Policy Advisory</td></tr>
+              <tr><td>Service Line 2</td><td>Health &amp; Pharma Programme Design</td></tr>
+              <tr><td>Service Line 3</td><td>High-Level Evaluation &amp; Impact Assessment</td></tr>
+              <tr><td>Service Line 4</td><td>Scientific Due Diligence for Finance &amp; Investment</td></tr>
+              <tr><td>Service Line 5</td><td>Knowledge Systems &amp; Standards Development</td></tr>
+              <tr><td>Service Line 6</td><td>Capacity Building &amp; Executive Training</td></tr>
+              <tr><td>Service Line 7</td><td>Multilingual Diplomatic Technical Advisory</td></tr>
+            </table>
+            <div class="enc" style="margin-top:1.2rem">
+              <span class="enc-title red">Classification sectorielle</span>
+              <p>Section M — Professional, Scientific &amp; Technical Activities &middot; Section P — Education &middot; Section E — Environmental Services &middot; Sections A–D — Natural Resources &amp; Energy &middot; NACE 72.10 — R&amp;D on Natural Sciences &amp; Engineering</p>
+            </div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Primary Buyers</span><span class="blist">World Bank &middot; UNDP &middot; WHO &middot; EU Institutions &middot; EIB &middot; EBRD &middot; Development Finance Institutions &middot; European Training Foundation &middot; International NGOs</span></div>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 3 &mdash; Service Line 1</span><span class="s-secname">Strategic Science &amp; Policy Advisory</span></div>
+        <h2 class="s-hl">De la molécule à la politique —<br><em>strategic science advisory</em><br>for the highest institutions</h2>
+        <p class="s-deck">Core arbitrage: science ↔ policy ↔ finance. Translating molecular biology and pharma insights into EU/UN policy frameworks, regulatory intelligence, and bank-grade investment risk analysis.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line covers the core arbitrage function: the translation of scientific knowledge into policy language, and of policy language into financial risk frameworks. It is designed for institutions that must make high-consequence decisions informed by complex scientific realities they cannot interpret internally.</p>
+            <p>Services include <strong>Science-to-Policy Translation</strong> for EU and UN institutions, converting molecular biology and pharma research into policy briefs and regulatory guidance. <strong>Regulatory Intelligence and Foresight</strong> delivers EMA, WHO, and FDA alignment analysis with anticipatory intelligence on regulatory trajectories.</p>
+          </div>
+          <div class="col">
+            <p><strong>Evidence-Based Decision Support for Banks</strong> provides scientific risk analysis for biotech and pharma investment decisions — translating pipeline complexity into structured financial risk assessments accessible to investment committees and credit risk teams.</p>
+            <p><strong>Public Health Strategy Design</strong> covers pandemic preparedness frameworks, biotech sovereignty strategy, and public health system architecture for national and supranational clients including EU Member State ministries and WHO regional offices.</p>
+            <div class="nace-strip"><span class="nc">M 70.22</span><span class="nc">M 72.19</span><span class="nc">M 74.90</span></div>
+          </div>
+          <div class="col">
+            <div class="enc">
+              <span class="enc-title">Services</span>
+              <p><strong>Science-to-Policy Translation</strong> — EU/UN policy briefs from molecular &amp; pharma science.</p>
+              <p><strong>Regulatory Intelligence &amp; Foresight</strong> — EMA, WHO, FDA alignment analysis.</p>
+              <p><strong>Evidence-Based Bank Decision Support</strong> — Scientific risk analysis for biotech/pharma investments.</p>
+              <p><strong>Public Health Strategy Design</strong> — Pandemic preparedness, biotech sovereignty.</p>
+            </div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>Deep science translated into policy language — then into financial risk frameworks: a sequential translation capacity unavailable in specialist advisory markets.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">European Commission &middot; EMA &middot; WHO &middot; World Bank &middot; EBRD &middot; International Development Banks &middot; EU Member State Ministries of Health &amp; Science</span></div>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 4 &mdash; Service Line 2</span><span class="s-secname">Health &amp; Pharma Programme Design</span></div>
+        <h2 class="s-hl">Des lignes directrices de l'OMS<br>à la mise en <em>œuvre nationale</em> —<br>high-stakes implementation</h2>
+        <p class="s-deck">Core arbitrage: guidelines ↔ implementation ↔ impact. Designing national health programmes, pharmaceutical supply chain strategies, and biotech innovation frameworks for emerging markets.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line addresses the translation of international health guidelines into real-world country-level implementation. It covers the full spectrum from national health system architecture to pharmaceutical supply chain strategy, clinical research ecosystems, and biotech innovation programming.</p>
+            <p>The critical gap addressed by this service is the persistent failure between WHO guidelines and national delivery capacity — a gap that is scientific, regulatory, logistical, and political simultaneously. Dr. Musaraj bridges all four dimensions within a single engagement.</p>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>National Programme Design</td><td>Architecture of national health programmes from epidemiological intelligence to delivery systems, monitoring frameworks, and outcome evaluation.</td></tr>
+              <tr><td>Pharma Supply Chain</td><td>End-to-end pharmaceutical supply chain advisory including procurement strategy, cold chain management, and regulatory compliance.</td></tr>
+              <tr><td>Clinical Research Ecosystems</td><td>National clinical research infrastructure, ethics frameworks, GCP capacity building, and regulatory environment assessment.</td></tr>
+              <tr><td>Biotech for Emerging Markets</td><td>Biotech innovation programme design: regulatory pathways, technology transfer, local manufacturing capacity.</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="nace-strip"><span class="nc">M 70.22</span><span class="nc">Q 86.90</span><span class="nc">M 72.11</span></div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>WHO guidelines and international health standards translated into operational country implementation — closing the gap between institutional prescription and national capacity.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">WHO &middot; UNICEF &middot; UNDP &middot; GAVI &middot; The Global Fund &middot; EU Health Programme &middot; World Bank Health Nutrition &amp; Population &middot; USAID</span></div>
+      </div>
+
+      <!-- PAGE 5 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 5 &mdash; Service Line 3</span><span class="s-secname">Evaluation &amp; Impact Assessment</span></div>
+        <h2 class="s-hl">La rigueur scientifique<br>au service de <em>l'imputabilité</em><br>institutionnelle</h2>
+        <p class="s-deck">Core arbitrage: funding ↔ results ↔ accountability. Evaluation of Erasmus+, Horizon Europe, and UN-funded programmes with SDG/ESG impact metrics and independent scientific validation.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line converts scientific rigour into measurable impact and funding justification. It serves the growing institutional demand for independent, scientifically credible evaluation of complex multi-sector programmes where standard evaluation frameworks are insufficient.</p>
+            <p>Evaluation of <strong>EU programmes</strong> — Erasmus+, Horizon Europe, European Structural Funds — includes scientific validation of outputs, outcomes, and impact, delivered to the standards required by the European Commission's evaluation frameworks.</p>
+          </div>
+          <div class="col">
+            <p>Evaluation of <strong>UN-funded programmes</strong> in health, education, and food security is conducted against theory of change, SDG alignment, and the funding accountability requirements of donors including UNDP, WHO, and UNESCO.</p>
+            <p><strong>Impact Metrics Design</strong> provides bespoke frameworks integrating SDG indicators, ESG criteria, and public health outcome metrics for institutional reporting to governing bodies, boards, and international accountability mechanisms.</p>
+            <div class="nace-strip"><span class="nc">M 70.22</span><span class="nc">M 72.20</span></div>
+          </div>
+          <div class="col">
+            <div class="enc">
+              <span class="enc-title">Evaluation Scope</span>
+              <p><strong>EU:</strong> Erasmus+, Horizon Europe, Structural Funds.</p>
+              <p><strong>UN:</strong> Health, education, food security programmes.</p>
+              <p><strong>Metrics:</strong> SDG, ESG, public health outcomes.</p>
+              <p><strong>Validation:</strong> Peer-level scientific review of outputs.</p>
+            </div>
+            <div class="edge" style="margin-top:0.9rem"><p><strong>Arbitrage Edge</strong>Scientific rigour applied to accountability — transforming programme outputs into evidence that satisfies both institutional funders and scientific peer review standards simultaneously.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">European Commission &middot; UNDP &middot; UNEP &middot; UNESCO &middot; WHO &middot; National Audit Bodies &middot; Development Finance Institutions</span></div>
+      </div>
+
+      <!-- PAGE 6 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 6 &mdash; Service Line 4</span><span class="s-secname">Scientific Due Diligence for Finance</span></div>
+        <h2 class="s-hl">La science du laboratoire<br>traduite en <em>langage du risque</em><br>financier</h2>
+        <p class="s-deck">Core arbitrage: biotech complexity ↔ financial decisions. Independent scientific due diligence for biotech startups, pharma pipelines, and healthtech investments — in language investment committees can act on.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line translates biotechnology complexity into the language of financial decision-making. It addresses a critical gap in institutional investment processes: the inability of financial teams to independently assess the scientific credibility, regulatory viability, and scalability of biotech and pharma assets.</p>
+            <p>For banks and investment institutions operating in health and biotech, the absence of this translation capacity creates blind spots that standard financial due diligence cannot fill. Scientific credibility, regulatory pathway risk, and clinical scalability are non-financial variables that directly determine asset value.</p>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>Biotech Startup Due Diligence</td><td>Scientific credibility assessment: platform validity, IP robustness, regulatory pathway feasibility, scientific team quality.</td></tr>
+              <tr><td>Pharma Pipeline Analysis</td><td>Clinical risk stratification, regulatory hurdle assessment, and market access intelligence for pharmaceutical pipelines.</td></tr>
+              <tr><td>Healthtech Investment Risk</td><td>Scientific and regulatory risk for digital health, medtech, and diagnostics: CE marking, FDA clearance, reimbursement pathways.</td></tr>
+              <tr><td>Health Fund Portfolio Advisory</td><td>Ongoing scientific intelligence: pipeline monitoring, regulatory alert services, competitive intelligence.</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="nace-strip"><span class="nc">K 64.99</span><span class="nc">M 70.22</span><span class="nc">M 72.19</span></div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>Laboratory science translated directly into investment risk language — giving financial institutions independent scientific intelligence they cannot generate internally.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">EIB &middot; EBRD &middot; World Bank IFC &middot; Development Finance Institutions &middot; Private Equity Health Funds &middot; Sovereign Wealth Funds &middot; Commercial Banks with Health Portfolios</span></div>
+      </div>
+
+      <!-- PAGE 7 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 7 &mdash; Service Line 5</span><span class="s-secname">Knowledge Systems &amp; Standards</span></div>
+        <h2 class="s-hl">Du savoir épars<br>aux <em>actifs institutionnels</em> —<br>knowledge systems design</h2>
+        <p class="s-deck">Core arbitrage: fragmented knowledge ↔ structured systems. Technical guidelines, knowledge platforms, standardisation frameworks, and certification schemes that institutions can own and operationalise.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line addresses the institutional problem of scattered, uncodified expertise. It converts fragmented knowledge assets into structured, institutionally deployable systems — technical guidelines, standardisation frameworks, knowledge repositories, and certification schemes that organisations can own and operationalise.</p>
+            <p>The deliverables produced under this service line are designed to generate ongoing institutional value beyond the engagement: systems that outlast the consultant, that can be updated by institutional staff, and that serve as authoritative references within their domain.</p>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>Technical Guidelines</td><td>Institutional technical guidelines across health, biotechnology, food safety, and education — structured for policy adoption and regulatory use.</td></tr>
+              <tr><td>Knowledge Platforms</td><td>Design and architecture of knowledge management systems and decision-support platforms for UN and EU organisations.</td></tr>
+              <tr><td>Standardisation Frameworks</td><td>Cross-border frameworks for health data, food traceability, and education quality assurance.</td></tr>
+              <tr><td>Training &amp; Certification</td><td>Professional certification programmes and modular training curricula for government, NGO, and private sector deployment.</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="nace-strip"><span class="nc">J 63.99</span><span class="nc">M 74.90</span><span class="nc">M 72.19</span></div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>Scattered expert knowledge converted into institutional knowledge assets — creating durable, ownable systems that generate ongoing organisational value beyond the engagement.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">UNESCO &middot; WHO &middot; UNICEF &middot; FAO &middot; European Commission &middot; ISO Technical Committees &middot; Regional Development Banks &middot; International Professional Associations</span></div>
+      </div>
+
+      <!-- PAGE 8 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 8 &mdash; Service Line 6</span><span class="s-secname">Capacity Building &amp; Executive Training</span></div>
+        <h2 class="s-hl">Le savoir d'élite<br>transformé en <em>capacité institutionnelle</em><br>durable</h2>
+        <p class="s-deck">Core arbitrage: expertise ↔ institutional capability. High-end executive training for government officials, bank analysts, and UN programme managers on biotech policy, health systems, and regulatory science.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line addresses the persistent gap between elite scientific and regulatory knowledge and the capacity of decision-makers to deploy it effectively. It delivers executive training programmes designed for senior audiences — government officials, bank analysts, and UN programme managers — on subjects that directly affect their institutional mandates.</p>
+            <p>Training is structured at the executive level: not introductory courses but intensive, peer-level engagements that assume professional seniority and deliver knowledge applicable to decision-making the following week.</p>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>Biotech Policy for Officials</td><td>Intensive programmes for senior civil servants and policymakers on biotechnology governance, regulatory frameworks, and science-informed policy design.</td></tr>
+              <tr><td>Scientific Literacy for Banks</td><td>Executive training for investment analysts and risk officers on biotech, pharma, and healthtech investment science.</td></tr>
+              <tr><td>Health Systems for UN Managers</td><td>Programme management training covering regulatory science, procurement, and evidence-based programme design.</td></tr>
+              <tr><td>Regulatory Science Masterclasses</td><td>Bespoke masterclass series on EMA, WHO, and FDA regulatory science for board-level executives.</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="nace-strip"><span class="nc">P 85.59</span><span class="nc">M 70.22</span></div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>Elite scientific and regulatory knowledge transformed into institutional capacity — equipping decision-makers to engage with complexity rather than delegate it.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">UNDP &middot; World Bank &middot; EU Training Framework &middot; European Training Foundation &middot; National Ministries &middot; Central Banks &middot; Multilateral Development Banks</span></div>
+      </div>
+
+      <!-- PAGE 9 -->
+      <div class="slide" role="listitem">
+        <div class="slide-hdr"><span class="s-pgnum">Page 9 &mdash; Service Line 7</span><span class="s-secname">Multilingual Diplomatic Technical Advisory</span></div>
+        <h2 class="s-hl">Langue, science<br>et <em>négociation diplomatique</em> —<br>une combinaison unique</h2>
+        <p class="s-deck">Core arbitrage: language ↔ power ↔ agreements. Technical negotiation support for health agreements, research collaborations, and EU–MENA, EU–Africa scientific diplomacy.</p>
+        <div class="cols">
+          <div class="col">
+            <p class="dropcap">This service line combines scientific and technical depth with multilingual diplomatic capability — addressing the specific gap in international negotiations where technical subject matter requires both scientific credibility and diplomatic precision to achieve binding outcomes.</p>
+            <p>International negotiations on health agreements, pharmaceutical cooperation, research frameworks, and food safety standards regularly fail not for political reasons but because no participant can hold the technical and diplomatic registers simultaneously. This service addresses that failure mode directly.</p>
+          </div>
+          <div class="col">
+            <table class="stbl">
+              <tr><td>Technical Negotiation Support</td><td>Expert technical support for international negotiations on health agreements, pharmaceutical cooperation, and scientific framework treaties.</td></tr>
+              <tr><td>Scientific Diplomacy</td><td>Advisory for EU–MENA, EU–Africa, and EU–Western Balkans scientific and health cooperation at ministerial and institutional level.</td></tr>
+              <tr><td>Multilingual Policy Facilitation</td><td>High-level facilitation of multilateral policy processes ensuring scientific precision is preserved across language and institutional boundaries.</td></tr>
+              <tr><td>Research Collaboration Architecture</td><td>Structural design of bilateral and multilateral research collaborations: consortium formation, IP frameworks, governance design.</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="nace-strip"><span class="nc">M 74.30</span><span class="nc">M 70.22</span></div>
+            <div class="pq"><p>"Language combined with science and diplomatic negotiation — enabling agreements that would collapse under the weight of technical complexity handled by non-scientific intermediaries."</p></div>
+            <div class="edge"><p><strong>Arbitrage Edge</strong>Language, science, and policy negotiation combined — bridging the gap that non-scientific intermediaries cannot close in high-stakes international agreements.</p></div>
+          </div>
+        </div>
+        <div class="buyers"><span class="blabel">Institutional Buyers</span><span class="blist">European Commission DG Research &middot; EEAS &middot; UNESCO &middot; WHO Regional Offices &middot; EU Delegations &middot; Regional Science Cooperation Bodies &middot; International Research Consortia</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="all-view" id="allView" aria-label="All sections expanded"></div>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="f-name">Dr. <em>Adanela</em> Musaraj</div>
+      <div class="f-role">Scientific &middot; Policy &middot; Finance Interface Consultant &mdash; High-Stakes Knowledge Arbitrage</div>
+    </div>
+    <div class="f-contact">
+      <a href="mailto:adanela.musaraj@yahoo.fr">adanela.musaraj@yahoo.fr</a>
+      <div class="f-copy">Health &middot; Biotechnology &middot; Food Systems &middot; Environment &middot; Education</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const track = document.getElementById('track');
+  const slides = Array.from(track.querySelectorAll('.slide'));
+  const total = slides.length;
+  const counter = document.getElementById('navCounter');
+  const rcounter = document.getElementById('rcounter');
+  const dotsRow = document.getElementById('dotsRow');
+  const expandBtn = document.getElementById('expandBtn');
+  const allView = document.getElementById('allView');
+  const navGrp = document.getElementById('navGrp');
+  const trackOuter = document.getElementById('trackOuter');
+  let cur = 0, expanded = false;
+
+  const dots = slides.map((_,i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Page '+(i+1));
+    d.addEventListener('click',()=>goTo(i));
+    dotsRow.appendChild(d);
+    return d;
+  });
+
+  function goTo(n){
+    cur = ((n%total)+total)%total;
+    track.style.transform = 'translateX(-'+(cur*100)+'%)';
+    counter.textContent = (cur+1)+' / '+total;
+    rcounter.textContent = 'Page '+(cur+1)+' of '+total;
+    dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+  }
+
+  document.getElementById('prevBtn').addEventListener('click',()=>goTo(cur-1));
+  document.getElementById('nextBtn').addEventListener('click',()=>goTo(cur+1));
+
+  document.addEventListener('keydown',e=>{
+    if(!expanded){
+      if(e.key==='ArrowLeft') goTo(cur-1);
+      if(e.key==='ArrowRight') goTo(cur+1);
+    }
+  });
+
+  let sx=0;
+  trackOuter.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  trackOuter.addEventListener('touchend',e=>{
+    const dx=sx-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>45) goTo(dx>0?cur+1:cur-1);
+  },{passive:true});
+
+  expandBtn.addEventListener('click',function(){
+    expanded=!expanded;
+    this.textContent = expanded?'Retour — Back to Carousel':'Lire tout — Read All';
+    this.setAttribute('aria-pressed',expanded?'true':'false');
+    trackOuter.style.display = expanded?'none':'';
+    dotsRow.style.display = expanded?'none':'';
+    navGrp.style.display = expanded?'none':'';
+    allView.classList.toggle('visible',expanded);
+    if(expanded && allView.children.length===0){
+      slides.forEach(sl=>{
+        const b=document.createElement('div');
+        b.className='av-block';
+        b.innerHTML=sl.innerHTML;
+        allView.appendChild(b);
+      });
+    }
+    const target = expanded?allView:trackOuter;
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
+</body>
+</html>
