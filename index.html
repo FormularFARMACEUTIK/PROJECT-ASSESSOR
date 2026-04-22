@@ -47,15 +47,21 @@
   .rcounter { margin-left: auto; font-family: var(--font-label); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
 
   /* CAROUSEL */
-  .carousel-section { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem 3rem; }
-  .controls { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--rule-light); flex-wrap: wrap; gap: 0.5rem; }
-  .nav-grp { display: flex; align-items: center; gap: 0.5rem; }
-  .nbtn { background: var(--ink); color: var(--paper); border: none; width: 34px; height: 34px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font-label); transition: background 0.15s; }
-  .nbtn:hover { background: var(--accent); }
-  .nbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .ncounter { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; min-width: 50px; text-align: center; }
-  .expand-btn { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; background: transparent; border: 1px solid var(--ink); color: var(--ink); padding: 0.35rem 0.9rem; cursor: pointer; transition: background 0.15s, color 0.15s; font-weight: 500; }
-  .expand-btn:hover { background: var(--ink); color: var(--paper); }
+ .carousel-track {
+  display: grid;
+  /8/
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* Space between items */
+  overflow: visible; /* Let items show */
+  transition: none; /* No movement needed */
+}
+
+/* Ensure items are block elements */
+.card {
+  width: auto;
+  /* Reset any carousel-specific widths */
+}
+
 
   /* DOTS */
   .dots-row { display: flex; justify-content: center; gap: 0.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-light); flex-wrap: wrap; }
@@ -147,7 +153,7 @@
     .col { padding: 0 0 1.2rem; border-right: none; border-bottom: 1px solid var(--rule-light); }
     .col:last-child { border-bottom: none; padding-bottom: 0; }
     .col:not(:first-child) { padding-left: 0; padding-top: 1.2rem; }
-    .carousel-section, .rubrique-wrap { padding: 0 1rem 2rem; }
+    .grid-section, .rubrique-wrap { padding: 0 1rem 2rem; }
     .masthead-inner { padding: 0 1rem; }
     .f-contact { text-align: left; }
   }
@@ -181,12 +187,21 @@
 
 <div class="carousel-section">
   <div class="controls">
-    <div class="nav-grp" id="navGrp">
-      <button class="nbtn" id="prevBtn" aria-label="Previous page">&#8592;</button>
-      <span class="ncounter" id="navCounter" aria-live="polite">1 / 9</span>
-      <button class="nbtn" id="nextBtn" aria-label="Next page">&#8594;</button>
-    </div>
-    <button class="expand-btn" id="expandBtn" aria-pressed="false">Lire tout &mdash; Read All</button>
+    <.carousel-track {
+  display: grid;
+  /8/
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* Space between items */
+  overflow: visible; /* Let items show */
+  transition: none; /* No movement needed */
+}
+
+/* Ensure items are block elements */
+.card {
+  width: auto;
+  /* Reset any carousel-specific widths */
+}
+
   </div>
 
   <div class="dots-row" id="dotsRow"></div>
